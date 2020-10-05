@@ -1,0 +1,37 @@
+{
+  "button": {
+    "login": "Войти",
+    "sign_up": "Регистрация",
+    "signUpConfirm": "Зарегистрироваться",
+    "return": "Вернуться"
+  },
+  "input": {
+    "loginLabel": "Имя пользователя",
+    "emailLabel": "Электронная почта",
+    "passwordLabel": "Пароль",
+    "firstNameLabel": "Имя",
+    "lastNameLabel": "Фамилия",
+    "passwordConfirmationLabel": "Подтверждение пароля"
+  },
+  "errors": {
+    "emailRequired": "E-mail обязателен",
+    "emailInvalid": "Невалидный E-mail",
+    "firstNameRequired": "Имя обязательно",
+    "lastNameRequired": "Фамилия обязательна",
+    "passwordRequired": "Пароль обязателен",
+    "passwordMinLength": "Минимальная длинна пароля 6 символов",
+    "sameAs": "Пароли должны совпадать",
+    "emailOccupied": "Такая почта уже занята"
+  },
+  "notifications": {
+    "success": "Успех!",
+    "successSignUp": "Регистрация прошла хорошо. Теперь вы можете войти!"
+  },
+  "placeholders": {
+    "addJob": "Добавить новую задачу...",
+    "addList": "Добавить новый лист..."
+  },
+  "messages": {
+    "noJob": "Не добавлено ни одной задачи..."
+  }
+}
