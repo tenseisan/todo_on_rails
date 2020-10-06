@@ -33,5 +33,17 @@
   },
   "messages": {
     "noJob": "Не добавлено ни одной задачи..."
+  },
+  "job": {
+    "title": "Название",
+    "status": "Статус",
+    "delete": "Удалить",
+    "complete": "Завершить",
+    "deleteAll": "Удалить все",
+    "completeAll": "Завершить все",
+    "statusData": {
+      "completed": "Завершено",
+      "active": "Активно"
+    }
   }
 }
