@@ -21,7 +21,7 @@ module Mutations
          end
          it 'create list' do
            expect { post '/graphql', params: { query: query }, headers: headers }.to change { List.count }.from(0).to(1)
-           expect(graphql_response['data']['createList']['id']).to be
+           expect(gql_response['data']['createList']['id']).to be
          end
        end
      end

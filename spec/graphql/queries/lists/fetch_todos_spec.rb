@@ -26,7 +26,7 @@ module Types
 
         it 'success return lists with tasks' do
           get '/graphql', params: { query: query }, headers: headers
-          expect(graphql_response['data']['lists'].size).to eq 1
+          expect(gql_response['data']['lists'].size).to eq 1
         end
       end
     end

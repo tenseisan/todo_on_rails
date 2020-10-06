@@ -24,8 +24,8 @@ module Mutations
 
           it 'success login user' do
             post '/graphql_auth', params: { query: query }
-            expect(graphql_response['data']['userLogin']['user']).to be
-            expect(graphql_response['data']['userLogin']['credentials']).to be
+            expect(gql_response['data']['userLogin']['user']).to be
+            expect(gql_response['data']['userLogin']['credentials']).to be
           end
         end
 
@@ -45,7 +45,7 @@ module Mutations
           end
           it 'return error' do
             post '/graphql_auth', params: { query: query }
-            expect(graphql_response['errors']).to be # TODO helper for detailed errors
+            expect(gql_response['errors']).to be # TODO helper for detailed errors
           end
         end
       end

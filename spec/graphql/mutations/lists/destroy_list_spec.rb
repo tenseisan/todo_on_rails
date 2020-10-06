@@ -21,7 +21,7 @@ module Mutations
           end
           it 'destroy list' do
             expect { post '/graphql', params: { query: query }, headers: headers }.to change { List.count }.from(1).to 0
-            expect(graphql_response['data']['destroyList']['id']).to be
+            expect(gql_response['data']['destroyList']['id']).to be
           end
         end
       end

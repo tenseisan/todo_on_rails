@@ -29,7 +29,7 @@ module Mutations
           it 'success create user' do
             post '/graphql_auth', params: { query: query }
             expect(User.count).to eq 1
-            expect(graphql_response['data']['userSignUp']['credentials']['accessToken']).to be
+            expect(gql_response['data']['userSignUp']['credentials']['accessToken']).to be
           end
         end
         context 'invalid query' do
@@ -52,7 +52,7 @@ module Mutations
           end
           it 'return error' do
             post '/graphql_auth', params: { query: query }
-            expect(graphql_response['errors']).to be # TODO helper for detailed errors
+            expect(gql_response['errors']).to be # TODO helper for detailed errors
           end
         end
       end

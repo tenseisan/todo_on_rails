@@ -25,7 +25,7 @@ module Mutations
             post '/graphql', params: { query: query }, headers: headers
             job.reload
             expect(job.status).to eq 'completed'
-            expect(graphql_response['data']['updateStatusById']['id']).to be
+            expect(gql_response['data']['updateStatusById']['id']).to be
           end
         end
       end

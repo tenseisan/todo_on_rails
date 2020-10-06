@@ -1,6 +1,6 @@
 module GraphQL
   module ResponseParser
-    def graphql_response
+    def gql_response
       return @json_response if response.body.object_id == @response_id
 
       @response_id = response.body.object_id
