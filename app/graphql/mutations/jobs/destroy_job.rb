@@ -1,5 +1,5 @@
 module Mutations
-  class Lists::DestroyJob < BaseMutation
+  class Jobs::DestroyJob < BaseMutation
     argument :id, ID, required: true
 
     type Types::ListItemType

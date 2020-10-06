@@ -5,25 +5,28 @@ module Mutations
     RSpec.describe CreateJob, type: :request do
       let(:user) { create(:user) }
       let(:headers) { user.create_new_auth_token }
-      let!(:list) { create(:list, user: user) }
-      let(:title) { create(:list_item, list: list, title: title) }
+      let(:list) { create(:list, user: user) }
+      let(:title) { Faker::Book.title }
+      let(:job) { create(:list_item, list: list, title: title) }
 
-      describe '#create_list' do
-        context 'valid quiery' do
+      describe '#resolve' do
+        context 'valid query' do
           let(:query) do
             <<-GRAPHQL
               mutation {
-                createJob(title: "#{title}")
+                createJob(listId: "#{list.id}"
+                          title: "#{title}"
+                          )
                 {
-                  id title
+                  id title status
                 }
               }
             GRAPHQL
           end
-          it 'create list' do
-            expect { post '/graphql', params: { query: query }, headers: headers }.to change { List.count }.from(0).to(1)
-            binding.pry
-            expect(graphql_response['data']['id']).to be
+          it 'create job' do
+            expect { post '/graphql', params: { query: query }, headers: headers }.to change { ListItem.count }.from(0).to(1)
+            expect(graphql_response['data']['createJob']['id']).to be
+            expect(graphql_response['data']['createJob']['status']).to be
           end
         end
       end

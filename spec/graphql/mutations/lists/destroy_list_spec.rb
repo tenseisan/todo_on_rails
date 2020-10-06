@@ -7,7 +7,7 @@ module Mutations
       let(:headers) { user.create_new_auth_token }
       let!(:list) { create(:list, user: user) }
 
-      describe '#destroy_list' do
+      describe '#resolve' do
         context 'valid query' do
           let(:query) do
             <<-GRAPHQL
@@ -19,9 +19,9 @@ module Mutations
               }
             GRAPHQL
           end
-          it 'destroy' do
+          it 'destroy list' do
             expect { post '/graphql', params: { query: query }, headers: headers }.to change { List.count }.from(1).to 0
-            expect(graphql_response['data']['id']).to be
+            expect(graphql_response['data']['destroyList']['id']).to be
           end
         end
       end

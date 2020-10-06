@@ -2,7 +2,7 @@ require 'rails_helper'
 
 module Mutations
   module Jobs
-    RSpec.describe DestroyJob, type: :request do
+    RSpec.describe UpdateStatusById, type: :request do
       let(:user) { create(:user) }
       let(:headers) { user.create_new_auth_token }
       let(:list) { create(:list, user: user) }
@@ -13,16 +13,19 @@ module Mutations
           let(:query) do
             <<-GRAPHQL
               mutation {
-                destroyJob(id: "#{job.id}")
+                updateStatusById(id: "#{job.id}" status: COMPLETED)
                 {
-                  id
+                  id status
                 }
-              }
+              },
             GRAPHQL
           end
-          it 'destroy job' do
-            expect { post '/graphql', params: { query: query }, headers: headers }.to change { ListItem.count }.from(1).to(0)
-            expect(graphql_response['data']['destroyJob']['id']).to be
+
+          it 'update job status' do
+            post '/graphql', params: { query: query }, headers: headers
+            job.reload
+            expect(job.status).to eq 'completed'
+            expect(graphql_response['data']['updateStatusById']['id']).to be
           end
         end
       end
