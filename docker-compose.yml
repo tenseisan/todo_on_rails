@@ -1,0 +1,44 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=todo_list_production
+    restart: on-failure
+  backend:
+    image: rails
+    environment:
+      - PGHOST=db
+      - PORT=3000
+    build:
+      context: .
+      args:
+        UID: ${UID:-1001}
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - migrations
+  migrations:
+    image: rails
+    command: bundle exec rails db:migrate
+    environment:
+      - PGHOST=db
+    depends_on:
+      - db
+  front:
+    build: ./frontend
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./frontend:/frontend
+    depends_on:
+      - db
+      - backend
+      - migrations
+volumes:
+  postgres:

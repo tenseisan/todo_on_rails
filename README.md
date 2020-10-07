@@ -9,7 +9,7 @@
     <img src="https://i.imgur.com/0iTTCl6.png" alt="Logo" width="600" height="90">
   </a>
   <p align="center">
-    <a href="">View Demo</a>
+    <a href="https://to-do-on-rails-web.herokuapp.com/">View Demo</a>
   </p>
 </p>
 
